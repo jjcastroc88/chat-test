@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat test</title>
+    <link rel="stylesheet" type="text/css" href="./css/styles.css" />
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <form action="/" method="POST" id="chatForm">
+      <input
+        id="txt"
+        autocomplete="off"
+        autofocus="on"
+        placeholder="Escribe tu mensaje aquí..."
+      /><button>Send</button>
+    </form>
+    <script src="./js/socket.io.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
+</html>
