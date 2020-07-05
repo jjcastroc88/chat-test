@@ -8,7 +8,7 @@ const messages = http => {
         user,
       };
 
-      io.emit(`The user ${socket.user} has joined`);
+      io.emit('is_online', `The user ${socket.user} has joined`);
     });
 
     socket.on('disconnect', user => {

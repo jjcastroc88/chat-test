@@ -2,11 +2,72 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-size: 16px;
 }
+
+html,
 body {
-  font: 13px Helvetica, Arial;
+  height: 100%;
 }
-form {
+
+.signup {
+  margin-top: 10px;
+}
+
+body {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+.form-content {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+.form-content .checkbox {
+  font-weight: 400;
+}
+.form-content .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-content .form-control:focus {
+  z-index: 2;
+}
+.form-content input[type='email'] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-content input[type='password'] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.center {
+  text-align: center;
+}
+
+.form-chat {
   background: #fff;
   padding: 3px;
   position: fixed;
@@ -16,28 +77,39 @@ form {
   border-top-style: solid;
   border-top-width: 1px;
 }
-form input {
+
+.form-chat input {
   border-style: solid;
   border-width: 1px;
   padding: 10px;
   width: 85%;
   margin-right: 0.5%;
 }
-form button {
+
+.form-chat button {
   width: 9%;
   background: rgb(130, 224, 255);
   border: none;
   padding: 10px;
   margin-left: 2%;
 }
+
 #messages {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
+
 #messages li {
   padding: 5px 10px;
 }
+
 #messages li:nth-child(odd) {
   background: #eee;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
 }

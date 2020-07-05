@@ -1,19 +1,29 @@
 const { User } = require('../models');
+const bcrypt = require('bcrypt');
+const { authorizeUser } = require('../services/auth');
 
 class UserProvider {
-  async createUser(userData) {
-    const userCreated = await User.create(userData);
-    return userCreated;
-  }
-
   async login({ email, password }) {
     const user = await User.findOne({ where: { email } });
-    return user.password === password;
-    // const valid = await bcrypt.compare(password, user.password);
+
+    if (!user) {
+      throw new Error('user or password invalid');
+    }
+
+    const isValidPassword = await bcrypt.compare(password, user.password);
+
+    if (!isValidPassword) {
+      throw new Error('user or password invalid');
+    }
+
+    return authorizeUser(user);
   }
+
   async create({ email, password, name }) {
-    const user = await User.create({ email, password, name });
-    return user;
+    const passEncrypt = await bcrypt.hash(password, 10),
+      user = await User.create({ email, password: passEncrypt, name });
+
+    return authorizeUser(user);
   }
 }
 
