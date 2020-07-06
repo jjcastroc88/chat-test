@@ -1,3 +1,4 @@
+const { callBot } = require('./bot');
 const messages = http => {
   const io = require('socket.io')(http);
 
@@ -17,6 +18,19 @@ const messages = http => {
 
     socket.on('message', message => {
       io.emit('message', `<strong>${socket.user}</strong>: ${message}`);
+      if (
+        socket.user !== 'CommandBot' &&
+        message.trim().indexOf('/stock=') > -1
+      ) {
+        callBot(message).then(result => {
+          if (result.status > 399 && result.status < 405) {
+            io.emit(
+              'message',
+              'sorry the bot is not available, please try again',
+            );
+          }
+        });
+      }
     });
   });
 };
